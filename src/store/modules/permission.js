@@ -1,5 +1,5 @@
 import { asyncRoutes, constantRoutes } from '@/router'
-
+// import Layout from '@/layout/index.vue'
 /**
  * Use meta.role to determine if the current user has permission
  * @param roles
@@ -48,6 +48,7 @@ const mutations = {
 
 const actions = {
   generateRoutes({ commit }, roles) {
+    debugger
     return new Promise(resolve => {
       let accessedRoutes
       if (roles.includes('admin')) {
@@ -55,10 +56,18 @@ const actions = {
       } else {
         accessedRoutes = filterAsyncRoutes(asyncRoutes, roles)
       }
+      // return (resolve) => require([`@/view/${view}`], resolve);
       commit('SET_ROUTES', accessedRoutes)
       resolve(accessedRoutes)
     })
   }
+}
+// 解决无法异步加载路由的问题
+// Cannot find module '@/view/Shop/shop.vue'
+export const loadView = (view) => {
+  // return (resolve) => require([`@/view/${view}`], resolve);
+  // return () => import(`@/views/${view}`);
+  return () => Promise.resolve(require(`@/views/${view}`).default)
 }
 
 export default {

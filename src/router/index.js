@@ -296,22 +296,38 @@ export const asyncRoutes = [
     ]
   },
 
-  {
-    path: '/zip',
-    component: Layout,
-    redirect: '/zip/download',
-    alwaysShow: true,
-    name: 'Zip',
-    meta: { title: 'Zip', icon: 'zip' },
-    children: [
-      {
-        path: 'download',
-        component: () => import('@/views/zip/index'),
-        name: 'ExportZip',
-        meta: { title: 'Export Zip' }
-      }
-    ]
-  },
+  // {
+  //   path: '/zip',
+  //   component: Layout,
+  //   redirect: '/zip/download',
+  //   alwaysShow: true,
+  //   name: 'Zip',
+  //   meta: { title: 'Zip', icon: 'zip' },
+  //   children: [
+  //     {
+  //       path: 'download',
+  //       component: () => import('@/views/zip/index'),
+  //       name: 'ExportZip',
+  //       meta: { title: 'Export Zip' }
+  //     }
+  //   ]
+  // },
+  // {
+  //   path: '/zip2',
+  //   component: Layout,
+  //   redirect: '/zip2/download2',
+  //   alwaysShow: true,
+  //   name: 'Zip2',
+  //   meta: { title: 'Zip2', icon: 'zip' },
+  //   children: [
+  //     {
+  //       path: 'download2',
+  //       component: () => import('@/views/zip2/index'),
+  //       name: 'ExportZip2',
+  //       meta: { title: 'Export Zip2' }
+  //     }
+  //   ]
+  // },
   {
     path: '/theme',
     component: Layout,
@@ -347,10 +363,10 @@ export const asyncRoutes = [
         meta: { title: 'External Link', icon: 'link' }
       }
     ]
-  },
+  }
 
   // 404 page must be placed at the end !!!
-  { path: '*', redirect: '/404', hidden: true }
+  // { path: '*', redirect: '/404', hidden: true }
 ]
 
 const createRouter = () => new Router({
